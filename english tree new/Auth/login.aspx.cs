@@ -46,11 +46,7 @@ public partial class Auth_login : System.Web.UI.Page
                 Session["code"] = null;
             Page.ClientScript.RegisterStartupScript(GetType(), "msgbox", "alert(' Invalid Username or Password.')", true);
             }
-
-        
-
-
-
+            
     }
     public static string EncryptData(string Message)
     {

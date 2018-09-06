@@ -35,9 +35,7 @@
                     Text="Load Report" OnClick="BtnLoadReport_Click" />
             </div>
         </section>
-
-
-
+           <asp:Panel ID="pnlContents" runat="server">
 
         <asp:DataGrid ID="gridPaymentinfo" runat="server" AutoGenerateColumns="false" Width="100%"
             HeaderStyle-HorizontalAlign="Center" HeaderStyle-BackColor="#C2DCEB"
@@ -100,7 +98,7 @@
                 </tr>
             </table>
         </div>
-
+</asp:Panel>
 
         <br />
 
@@ -116,5 +114,21 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="cpfotter" runat="Server">
+      <script type="text/javascript">
+        function PrintPanel() {
+            debugger;
+            var panel = document.getElementById("<%=pnlContents.ClientID %>");
+            var printWindow = window.open('', '', 'height=400,width=800');
+            printWindow.document.write('<html><head><title>DIV Contents</title>');
+            printWindow.document.write('</head><body >');
+            printWindow.document.write(panel.innerHTML);
+            printWindow.document.write('</body></html>');
+            printWindow.document.close();
+            setTimeout(function () {
+                printWindow.print();
+            }, 500);
+            return false;
+        };
+    </script>
 </asp:Content>
 
